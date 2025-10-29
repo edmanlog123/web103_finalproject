@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Edward Ogbalor,  Emilio L. Ameman
+Designed and developed by: Edward Ogbalor, Emilio L. Aleman
 🔗 Link to deployed app:
 
 ## About
