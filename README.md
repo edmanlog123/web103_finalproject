@@ -1,4 +1,4 @@
-# [your app name here]
+# Rella
 
 CodePath WEB103 Final Project
 
