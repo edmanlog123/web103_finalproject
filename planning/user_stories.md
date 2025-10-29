@@ -5,6 +5,8 @@ Reference the Writing User Stories final project guide in the course portal for 
 ## Outline User Roles
 
 [👉🏾👉🏾👉🏾 Include at least 1, but no more than 3, user roles.]
+Athlete
+Trainer
 
 ## Draft User Stories
 
