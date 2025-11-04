@@ -8,6 +8,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Wireframe 1: [page title]
 
+[CamScanner 11-4-25 18.50.pdf](https://github.com/user-attachments/files/23347183/CamScanner.11-4-25.18.50.pdf)
+
 [👉🏾👉🏾👉🏾 include wireframe 1]
 
 ## Wireframe 2: [page title]
