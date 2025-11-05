@@ -7,6 +7,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 - ⭐ Login Page
 - ⭐ Dashboard
 - ⭐ Workout Card
+- Edit workout Page
+- Add wrokout page
 
 ## Wireframe 1: Login Page
 ![Login Page Wireframe](./wireframes/loginPage.pdf)
