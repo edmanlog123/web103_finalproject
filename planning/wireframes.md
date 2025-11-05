@@ -4,20 +4,15 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- ⭐ Login Page
+- ⭐ Dashboard
+- ⭐ Workout Card
 
-## Wireframe 1: [page title]
+## Wireframe 1: Login Page
+[📄 View PDF (Login Page)](https://github.com/edmanlog123/WEB103/blob/main/planning/wireframes/loginPage.pdf)
 
-[CamScanner 11-4-25 18.50.pdf](https://github.com/user-attachments/files/23347183/CamScanner.11-4-25.18.50.pdf)
+## Wireframe 2: Dashboard
+[📄 View PDF (Dashboard)](https://github.com/edmanlog123/WEB103/blob/main/planning/wireframes/Dashboard.pdf)
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
-
-## Wireframe 2: [page title]
-
-[👉🏾👉🏾👉🏾 include wireframe 2]
-
-## Wireframe 3: [page title]
-
-[👉🏾👉🏾👉🏾 include wireframe 3]
-
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 3: Workout Card
+[📄 View PDF (Workout Card)](https://github.com/edmanlog123/WEB103/blob/main/planning/wireframes/WorkoutCard.pdf)
