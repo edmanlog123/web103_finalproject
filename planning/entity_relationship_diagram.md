@@ -4,14 +4,12 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Create the List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+- Workouts
+- Users
+- trainer_athletes
+- exercises
 
 ## Add the Entity Relationship Diagram
 
 ![Rella ERD](Frame_38.png)
 
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
