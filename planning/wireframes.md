@@ -7,6 +7,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 - ⭐ Login Page
 - ⭐ Dashboard
 - ⭐ Workout Card
+- ⭐ Edit Workout Page
+- ⭐ Add Workout Page
 - ⭐ Profile Page
 - ⭐ Settings Page
 - ⭐ Notifications Page
