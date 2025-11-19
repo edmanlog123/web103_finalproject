@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getWorkoutById, updateWorkout, deleteWorkout } from '../services/api';
+import { getWorkoutById, updateWorkout, deleteWorkout } from '../services/workouts';
 
 const EditWorkout = () => {
     const { id } = useParams();
@@ -13,12 +13,8 @@ const EditWorkout = () => {
     useEffect(() => {
         const fetchWorkout = async () => {
             try {
-                // Note: We are fetching ALL and finding by ID because 
-                // the backend endpoint GET /:workoutId wasn't explicitly clear 
-                // in the provided snippets, but PATCH /:workoutId exists.
                 const data = await getWorkoutById(id);
                 if (data) {
-                    // Format date for input field (yyyy-MM-dd)
                     const d = new Date(data.date);
                     setDate(d.toISOString().split('T')[0]);
                     setNotes(data.notes);
@@ -55,35 +51,47 @@ const EditWorkout = () => {
     }
 
     return (
-        <div className="form-container">
-            <h2>Edit Workout</h2>
-            <form onSubmit={handleUpdate}>
-                <label>Date</label>
-                <input 
-                    type="date" 
-                    value={date} 
-                    onChange={(e) => setDate(e.target.value)} 
-                />
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md mt-10">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Edit Workout</h2>
+            <form onSubmit={handleUpdate} className="space-y-6">
+                <div>
+                    <label className="block text-gray-700 font-semibold mb-2">Date</label>
+                    <input 
+                        type="date" 
+                        className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                        value={date} 
+                        onChange={(e) => setDate(e.target.value)} 
+                    />
+                </div>
                 
-                <label>Notes</label>
-                <textarea 
-                    rows="5"
-                    value={notes} 
-                    onChange={(e) => setNotes(e.target.value)} 
-                />
+                <div>
+                    <label className="block text-gray-700 font-semibold mb-2">Notes</label>
+                    <textarea 
+                        rows="5"
+                        className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                        value={notes} 
+                        onChange={(e) => setNotes(e.target.value)} 
+                    />
+                </div>
 
-                <div className="checkbox-container">
+                <div className="flex items-center gap-3">
                     <input 
                         type="checkbox" 
+                        id="completed"
+                        className="w-5 h-5 text-blue-600"
                         checked={isCompleted} 
                         onChange={(e) => setIsCompleted(e.target.checked)}
                     />
-                    <label>Workout Completed?</label>
+                    <label htmlFor="completed" className="text-gray-700 font-medium">Workout Completed?</label>
                 </div>
 
-                <div className="button-group">
-                    <button type="submit">Save Changes</button>
-                    <button type="button" onClick={handleDelete} className="delete-btn" style={{backgroundColor: 'red', marginLeft: '10px'}}>Delete</button>
+                <div className="flex gap-4 pt-4">
+                    <button type="submit" className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        Save Changes
+                    </button>
+                    <button type="button" onClick={handleDelete} className="flex-1 bg-red-500 text-white py-3 rounded-lg font-semibold hover:bg-red-600 transition">
+                        Delete Workout
+                    </button>
                 </div>
             </form>
         </div>

@@ -6,14 +6,14 @@ export const getAllWorkouts = async () => {
 };
 
 export const createWorkout = async (workoutData) => {
-  // workoutData: { date, notes, is_completed }
   const response = await apiClient.post('/workouts', workoutData);
   return response.data;
 };
 
-export const getWorkoutByDate = async (date) => {
-  const response = await apiClient.get(`/workouts/${date}`);
-  return response.data;
+export const getWorkoutById = async (id) => {
+  const response = await apiClient.get('/workouts');
+  // Helper to find the specific workout from the list
+  return response.data.find(workout => workout.workout_id === parseInt(id));
 };
 
 export const updateWorkout = async (id, workoutData) => {
