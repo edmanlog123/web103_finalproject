@@ -90,14 +90,3 @@ export async function addAthleteToTrainer(trainerId, athleteId) {
     }
 }
 
-export const getUserByWorkoutId = async (workoutId) => {
-    try {
-        const query = `SELECT * FROM users WHERE user_id = $1`
-        const result = await pool.query(query, [workoutId])
-        return result.rows[0]
-    }
-    catch (error) {
-        console.error('Error getting user by workout id:', error)
-        throw error
-    }
-}
