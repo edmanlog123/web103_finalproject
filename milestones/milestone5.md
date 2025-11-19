@@ -6,15 +6,15 @@ This document should be completed and submitted during **Unit 9** of this course
 
 This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
 
-- [ ] Deploy your project on Render
-  - [ ] In `readme.md`, add the link to your deployed project
-- [ ] Update the status of issues in your project board as you complete them
-- [ ] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
-  - [ ] Under each feature you have completed, **include a GIF** showing feature functionality
-- [ ] In this document, complete the **Reflection** section below
-- [ ] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
-- [ ] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
-  - [ ] Include this GIF in the **Final Demo GIF** section below
+- [x] Deploy your project on Render
+  - [x] In `readme.md`, add the link to your deployed project
+- [x] Update the status of issues in your project board as you complete them
+- [x] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
+  - [x] Under each feature you have completed, **include a GIF** showing feature functionality
+- [x] In this document, complete the **Reflection** section below
+- [x] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
+- [x] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
+  - [x] Include this GIF in the **Final Demo GIF** section below
 
 ## Final Project Feature Checklist
 
@@ -24,28 +24,28 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-- [ ] The project includes an Express backend app and a React frontend app
-- [ ] The project includes these backend-specific features:
-  - [ ] At least one of each of the following database relationships in Postgres
-    - [ ] one-to-many
-    - [ ] many-to-many with a join table
-  - [ ] A well-designed RESTful API that:
-    - [ ] supports all four main request types for a single entity (ex. tasks in a to-do list app): GET, POST, PATCH, and DELETE
-      - [ ] the user can **view** items, such as tasks
-      - [ ] the user can **create** a new item, such as a task
-      - [ ] the user can **update** an existing item by changing some or all of its values, such as changing the title of task
-      - [ ] the user can **delete** an existing item, such as a task
-    - [ ] Routes follow proper naming conventions
-  - [ ] The web app includes the ability to reset the database to its default state
-- [ ] The project includes these frontend-specific features:
-  - [ ] At least one redirection, where users are able to navigate to a new page with a new URL within the app
-  - [ ] At least one interaction that the user can initiate and complete on the same page without navigating to a new page
-  - [ ] Dynamic frontend routes created with React Router
-  - [ ] Hierarchically designed React components
-    - [ ] Components broken down into categories, including Page and Component types
-    - [ ] Corresponding container components and presenter components as appropriate
-- [ ] The project includes dynamic routes for both frontend and backend apps
-- [ ] The project is deployed on Render with all pages and features that are visible to the user are working as intended
+- [x] The project includes an Express backend app and a React frontend app
+- [x] The project includes these backend-specific features:
+  - [x] At least one of each of the following database relationships in Postgres
+    - [x] one-to-many
+    - [x] many-to-many with a join table
+  - [x] A well-designed RESTful API that:
+    - [x] supports all four main request types for a single entity (ex. tasks in a to-do list app): GET, POST, PATCH, and DELETE
+      - [x] the user can **view** items, such as tasks
+      - [x] the user can **create** a new item, such as a task
+      - [x] the user can **update** an existing item by changing some or all of its values, such as changing the title of task
+      - [x] the user can **delete** an existing item, such as a task
+    - [x] Routes follow proper naming conventions
+  - [x] The web app includes the ability to reset the database to its default state
+- [x] The project includes these frontend-specific features:
+  - [x] At least one redirection, where users are able to navigate to a new page with a new URL within the app
+  - [x] At least one interaction that the user can initiate and complete on the same page without navigating to a new page
+  - [x] Dynamic frontend routes created with React Router
+  - [x] Hierarchically designed React components
+    - [x] Components broken down into categories, including Page and Component types
+    - [x] Corresponding container components and presenter components as appropriate
+- [x] The project includes dynamic routes for both frontend and backend apps
+- [x] The project is deployed on Render with all pages and features that are visible to the user are working as intended
 
 ### Custom Features
 
@@ -85,21 +85,16 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 ## Reflection
 
 ### 1. What went well during this unit?
-
-[👉🏾👉🏾👉🏾 your answer here]
+Our team successfully implemented dynamic frontend and backend routes, ensuring smooth navigation and interaction within the app. We also deployed the project on Render, and all pages and features are working as intended.
 
 ### 2. What were some challenges your group faced in this unit?
-
-[👉🏾👉🏾👉🏾 your answer here]
+The biggest challenge we faced was the timeline of completing our project since one of our team members got sick for a week. Nonetheless, we were able to overcome this and complete the project.
 
 ### 3. What were some of the highlights or achievements that you are most proud of in this project?
-
-[👉🏾👉🏾👉🏾 your answer here]
+We are most proud of successfully implementing dynamic frontend and backend routes, as well as deploying the project on Render. Additionally, we were able to collaborate effectively as a team despite the challenges we faced.
 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
-
-[👉🏾👉🏾👉🏾 your answer here]
+Since the beginning of the course, I have grown significantly in my understanding of full-stack web development, including working with databases, creating dynamic routes, and deploying applications. I have also improved my collaboration and problem-solving skills through group projects.
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
-
-[👉🏾👉🏾👉🏾 your answer here]
+My goals related to web development include mastering advanced backend technologies and improving my frontend design skills. To achieve these goals, I plan to continue building projects, learning new frameworks, and staying updated with industry trends through articles and tutorials.
