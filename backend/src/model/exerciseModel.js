@@ -1,6 +1,6 @@
 import { pool } from "../config/db.js";
 
-export async function AddExerciseToWorkout (exerciseData) {
+export async function addExerciseToWorkout (exerciseData) {
     const { workout_id, name, muscle_group, sets, reps, type } = exerciseData
     try {
         const query = `INSERT INTO exercises (workout_id, name, muscle_group, sets, reps, type) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`
@@ -14,8 +14,9 @@ export async function AddExerciseToWorkout (exerciseData) {
     }
 }
 
-export async function GetExercisesByWorkoutId(workout_id) {
+export async function getExercisesByWorkoutId(workout_id) {
     try {
+        
         const query = `SELECT * FROM exercises WHERE workout_id = $1`
         const result = await pool.query(query, [workout_id])
         return result.rows
