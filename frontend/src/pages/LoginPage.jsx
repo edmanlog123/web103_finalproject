@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loginUser } from '../services/auth';
+import { loginUser } from '../services/auth'; // FIXED: Changed 'api' to 'auth'
 import { useNavigate, Link } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -13,46 +13,39 @@ const LoginPage = () => {
             const data = await loginUser({ email, password });
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
+            alert('Login Successful!');
             navigate('/');
-            window.location.reload(); // Force reload to update navbar state
+            window.location.reload(); // Updates the navbar after login
         } catch (error) {
-            alert('Login failed. Please check your credentials.');
+            console.error("Login Error:", error); // This prints the real error to the console
+            alert('Login failed. Check console for details.');
         }
     };
 
     return (
-        <div className="flex justify-center items-center h-[80vh]">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-200">
-                <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">Welcome Back</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                        <input 
-                            type="email" 
-                            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                            value={email} 
-                            onChange={(e) => setEmail(e.target.value)} 
-                            required 
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                        <input 
-                            type="password" 
-                            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-                            value={password} 
-                            onChange={(e) => setPassword(e.target.value)} 
-                            required 
-                        />
-                    </div>
-                    <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200">
-                        Login
-                    </button>
-                </form>
-                <p className="mt-4 text-center text-sm text-gray-600">
-                    Don't have an account? <Link to="/register" className="text-blue-500 font-bold">Sign up</Link>
-                </p>
-            </div>
+        <div className="login-container">
+            <h2>Welcome Back</h2>
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type="email" 
+                    placeholder="Email" 
+                    value={email} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    required 
+                />
+                <input 
+                    type="password" 
+                    placeholder="Password" 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    required 
+                />
+                <button type="submit">Login</button>
+            </form>
+            {/* ADDED: Link to Register Page */}
+            <p style={{marginTop: '20px'}}>
+                New here? <Link to="/register">Sign Up</Link>
+            </p>
         </div>
     );
 };
