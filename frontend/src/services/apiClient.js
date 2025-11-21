@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-// Create a single axios instance for the whole app
 const apiClient = axios.create({
-  baseURL: 'http://localhost:5000/api', // Your backend URL
+  baseURL: 'http://localhost:5000/api', // Matches your backend port
 });
 
-// Interceptor: Automatically adds the Authorization header if a token exists
 apiClient.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {

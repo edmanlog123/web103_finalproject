@@ -9,3 +9,67 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
+
+/* Custom Calendar Styling */
+.react-calendar {
+    font-family: inherit;
+    border-radius: 0.75rem;
+    border: none !important;
+    width: 100% !important;
+}
+
+/* Header text (Month Year) */
+.react-calendar__navigation button {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background-color: #f3f4f6;
+    border-radius: 0.5rem;
+}
+
+/* Weekday names */
+.react-calendar__month-view__weekdays {
+    font-weight: 600;
+    color: #9ca3af;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* Tiles (Days) */
+.react-calendar__tile {
+    padding: 10px 6px;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+}
+
+/* Hover state for tiles */
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+    background-color: #eff6ff; /* blue-50 */
+    color: #2563eb;
+}
+
+/* Selected date */
+.react-calendar__tile--active {
+    background: #2563eb !important; /* blue-600 */
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+}
+
+/* Today's date */
+.react-calendar__tile--now {
+    background: #fef3c7; /* yellow-100 */
+    color: #d97706;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+    background: #fde68a;
+}

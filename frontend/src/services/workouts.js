@@ -5,19 +5,20 @@ export const getAllWorkouts = async () => {
   return response.data;
 };
 
-export const createWorkout = async (workoutData) => {
-  const response = await apiClient.post('/workouts', workoutData);
+export const getWorkoutById = async (id) => {
+  // Since the backend might not have a direct GET /workouts/:id, 
+  // we filter from all workouts (common pattern for small apps)
+  const response = await apiClient.get('/workouts');
+  return response.data.find(w => w.workout_id === parseInt(id));
+};
+
+export const createWorkout = async (data) => {
+  const response = await apiClient.post('/workouts', data);
   return response.data;
 };
 
-export const getWorkoutById = async (id) => {
-  const response = await apiClient.get('/workouts');
-  // Helper to find the specific workout from the list
-  return response.data.find(workout => workout.workout_id === parseInt(id));
-};
-
-export const updateWorkout = async (id, workoutData) => {
-  const response = await apiClient.patch(`/workouts/${id}`, workoutData);
+export const updateWorkout = async (id, data) => {
+  const response = await apiClient.patch(`/workouts/${id}`, data);
   return response.data;
 };
 
