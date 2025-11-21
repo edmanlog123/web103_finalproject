@@ -9,8 +9,9 @@ import './index.css';
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // Simple check for token
   const token = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -26,47 +27,60 @@ const App = () => {
     { path: "/edit/:id", element: <EditWorkout /> },
   ]);
 
-  // Hide navbar on auth pages
+  // Hide navbar on login/register screens for a clean look
   if (['/login', '/register'].includes(location.pathname)) {
-    return <div className="min-h-screen bg-gray-50">{element}</div>;
+    return <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">{element}</div>;
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <nav className="bg-blue-600 shadow-lg text-white">
-        <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      {/* Navigation Bar */}
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-4">
-              <Link to="/" className="text-2xl font-bold tracking-tight">
-                🏋️ Rella
+            {/* Logo area */}
+            <div className="flex items-center gap-2">
+              <Link to="/" className="flex items-center gap-2">
+                <span className="text-2xl">🏋️</span>
+                <span className="font-bold text-xl tracking-tight text-blue-600">Rella</span>
               </Link>
-              {token && (
-                 <span className="text-blue-100 text-sm hidden sm:block">Welcome, {user.name || 'Athlete'}</span>
-              )}
             </div>
-            <div className="flex gap-4">
+
+            {/* Navigation Links */}
+            <div className="flex items-center gap-4">
               {token ? (
                 <>
-                  <Link to="/" className="hover:bg-blue-700 px-3 py-2 rounded transition">Dashboard</Link>
-                  <Link to="/new" className="hover:bg-blue-700 px-3 py-2 rounded transition">Log Workout</Link>
-                  <button 
-                    onClick={handleLogout} 
-                    className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded font-semibold transition shadow-sm"
-                  >
-                    Logout
-                  </button>
+                   <Link to="/">
+                      <button className="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition">
+                        Dashboard
+                      </button>
+                   </Link>
+                   <Link to="/new">
+                      <button className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition shadow-sm">
+                        + Log Workout
+                      </button>
+                   </Link>
+                   <button 
+                      onClick={handleLogout} 
+                      className="text-red-500 hover:bg-red-50 px-4 py-2 rounded-md font-medium transition border border-transparent hover:border-red-100"
+                   >
+                      Logout
+                   </button>
                 </>
               ) : (
-                 <Link to="/login" className="bg-white text-blue-600 px-4 py-2 rounded font-bold hover:bg-gray-100 transition">Login</Link>
+                <Link to="/login">
+                  <button className="text-blue-600 font-medium hover:underline">Login</button>
+                </Link>
               )}
             </div>
           </div>
         </div>
       </nav>
 
-      <div className="flex-grow max-w-6xl mx-auto w-full p-6">
+      {/* Main Content Area */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {element}
-      </div>
+      </main>
     </div>
   );
 }

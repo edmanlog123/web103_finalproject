@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getAllWorkouts } from '../services/workouts';
-import WorkoutCard from '../components/WorkoutCard';
+import WorkoutCard from '../components/WorkoutCard'; 
 import { useNavigate, Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // Default styles
+import 'react-calendar/dist/Calendar.css'; // Import default calendar styles
 
 const Dashboard = () => {
     const [workouts, setWorkouts] = useState([]);
@@ -16,7 +16,7 @@ const Dashboard = () => {
         const fetchData = async () => {
             try {
                 const data = await getAllWorkouts();
-                // Sort by newest first
+                // Sort by date descending (newest first)
                 const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setWorkouts(sorted);
                 setFilteredWorkouts(sorted);
@@ -30,71 +30,65 @@ const Dashboard = () => {
         fetchData();
     }, [navigate]);
 
-    // Handle filtering when date changes
+    // Filter workouts when a date is clicked on the calendar
     useEffect(() => {
         if (selectedDate) {
-            const selectionStr = selectedDate.toDateString();
+            // Normalize selected date to string for comparison
+            const selDateStr = selectedDate.toDateString();
             const filtered = workouts.filter(w => 
-                new Date(w.date).toDateString() === selectionStr
+                new Date(w.date).toDateString() === selDateStr
             );
             setFilteredWorkouts(filtered);
         } else {
+            // Reset to show all if no date selected
             setFilteredWorkouts(workouts);
         }
     }, [selectedDate, workouts]);
 
-    // Helper to add dots to calendar dates that have workouts
+    // Function to add content (dots) to calendar tiles
     const tileContent = ({ date, view }) => {
         if (view === 'month') {
+            // Check if any workout exists on this date
             const hasWorkout = workouts.some(w => 
                 new Date(w.date).toDateString() === date.toDateString()
             );
             if (hasWorkout) {
-                return <div className="h-2 w-2 bg-blue-500 rounded-full mx-auto mt-1"></div>;
+                return <div className="h-1.5 w-1.5 bg-blue-500 rounded-full mx-auto mt-1"></div>;
             }
         }
     };
 
-    if (loading) return <div className="text-center mt-20 text-gray-500">Loading...</div>;
+    if (loading) return <div className="text-center mt-20 text-gray-400">Loading your stats...</div>;
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-8">
-            {/* Top Header Section */}
-            <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+        <div className="animate-fade-in">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-8">
                 <div>
-                    <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight">Dashboard</h2>
-                    <p className="text-gray-500">
+                    <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Your Activity</h2>
+                    <p className="text-gray-500 mt-1">
                         {selectedDate 
                             ? `Showing workouts for ${selectedDate.toLocaleDateString()}` 
-                            : "Welcome back! Here is your recent activity."}
+                            : "Overview of your recent training sessions"}
                     </p>
                 </div>
-                
-                <div className="flex gap-3">
-                    {selectedDate && (
-                        <button 
-                            onClick={() => setSelectedDate(null)}
-                            className="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
-                        >
-                            Clear Filter
-                        </button>
-                    )}
-                    <Link to="/new">
-                        <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg transition transform hover:-translate-y-0.5">
-                            + Log Workout
-                        </button>
-                    </Link>
-                </div>
+                {selectedDate && (
+                    <button 
+                        onClick={() => setSelectedDate(null)}
+                        className="text-sm text-blue-600 hover:underline mb-1 md:mb-0"
+                    >
+                        Clear Date Filter
+                    </button>
+                )}
             </div>
-
-            {/* Main Grid Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            {/* THE GRID LAYOUT */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 
-                {/* Left Column: Workout List (Spans 8 columns) */}
-                <div className="lg:col-span-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {filteredWorkouts.length > 0 ? (
-                            filteredWorkouts.map((workout) => (
+                {/* LEFT COLUMN: Workout List (Takes up 2/3 width on large screens) */}
+                <div className="lg:col-span-2 space-y-6">
+                    {filteredWorkouts.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {filteredWorkouts.map((workout) => (
                                 <WorkoutCard 
                                     key={workout.workout_id} 
                                     id={workout.workout_id} 
@@ -102,62 +96,48 @@ const Dashboard = () => {
                                     notes={workout.notes}
                                     isCompleted={workout.is_completed}
                                 />
-                            ))
-                        ) : (
-                            <div className="col-span-full bg-white p-10 rounded-xl shadow-sm text-center border border-dashed border-gray-300">
-                                <p className="text-gray-500 text-lg">No workouts found for this period.</p>
-                                {selectedDate && (
-                                    <button 
-                                        onClick={() => setSelectedDate(null)}
-                                        className="mt-4 text-blue-600 hover:underline"
-                                    >
-                                        View all workouts
-                                    </button>
-                                )}
-                            </div>
-                        )}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="bg-white rounded-xl border-2 border-dashed border-gray-200 p-12 text-center">
+                            <p className="text-gray-500 mb-4 text-lg">No workouts found for this period.</p>
+                            <Link to="/new">
+                                <button className="text-blue-600 font-semibold hover:underline">
+                                    Log a new one now &rarr;
+                                </button>
+                            </Link>
+                        </div>
+                    )}
                 </div>
 
-                {/* Right Column: Calendar & Stats (Spans 4 columns) */}
-                <div className="lg:col-span-4">
-                    <div className="sticky top-6 space-y-6">
-                        {/* Interactive Calendar Card */}
-                        <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                            <h3 className="font-bold text-gray-700 mb-4 border-b pb-2">📅 Calendar</h3>
-                            <div className="calendar-wrapper">
-                                <Calendar 
-                                    onChange={setSelectedDate} 
-                                    value={selectedDate}
-                                    tileContent={tileContent}
-                                    className="w-full border-none"
-                                />
+                {/* RIGHT COLUMN: Calendar (Takes up 1/3 width on large screens) */}
+                <div className="lg:col-span-1">
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
+                        <h3 className="font-bold text-gray-700 mb-4 flex items-center gap-2">
+                            <span>📅</span> Calendar
+                        </h3>
+                        <Calendar 
+                            onChange={setSelectedDate} 
+                            value={selectedDate}
+                            tileContent={tileContent}
+                            className="w-full border-none text-sm"
+                        />
+                        <div className="mt-6 pt-6 border-t border-gray-100">
+                            <div className="flex justify-between text-sm mb-2">
+                                <span className="text-gray-500">Total Workouts</span>
+                                <span className="font-bold text-gray-900">{workouts.length}</span>
                             </div>
-                            <div className="mt-4 text-xs text-gray-400 text-center">
-                                <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-1"></span>
-                                Indicates a workout day
-                            </div>
-                        </div>
-
-                        {/* Quick Stats Card */}
-                        <div className="bg-blue-600 text-white p-6 rounded-xl shadow-lg">
-                            <h3 className="font-bold text-blue-100 mb-4">Your Progress</h3>
-                            <div className="flex justify-between items-center">
-                                <div>
-                                    <div className="text-3xl font-bold">{workouts.length}</div>
-                                    <div className="text-blue-200 text-sm">Total Workouts</div>
-                                </div>
-                                <div>
-                                    <div className="text-3xl font-bold">
-                                        {workouts.filter(w => w.is_completed).length}
-                                    </div>
-                                    <div className="text-blue-200 text-sm">Completed</div>
-                                </div>
+                            <div className="flex justify-between text-sm">
+                                <span className="text-gray-500">Completion Rate</span>
+                                <span className="font-bold text-green-600">
+                                    {workouts.length > 0 
+                                        ? Math.round((workouts.filter(w => w.is_completed).length / workouts.length) * 100) 
+                                        : 0}%
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )
