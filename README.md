@@ -28,7 +28,7 @@ Backend:
 
 ## 🌟 Features
 
-### 🗓️ Workout Calendar
+### ✅ Workout Calendar
 - View and organize workouts on an interactive calendar.  
 - Plan sessions for each day and visualize your fitness schedule.  
 - Helps users stay consistent and structured with their training routine.  
@@ -36,7 +36,7 @@ Backend:
 
 ---
 
-### ➕ Add Workout
+### ✅ Add Workout
 - Create and customize workouts with fields such as name, duration, muscle group, and intensity.  
 - Adds flexibility for users to tailor their fitness plans.  
 *(GIF demonstrating this feature goes here)*  
@@ -51,7 +51,7 @@ Backend:
 
 ---
 
-### 📈 Progress Dashboard
+### ✅ Progress Dashboard
 - Displays weekly and monthly summaries of workout history.  
 - Shows trends in total sessions, time spent, and intensity.  
 - Helps users monitor growth and adjust routines effectively.  
@@ -67,7 +67,7 @@ Backend:
 
 ---
 
-### 🔐 User Profiles & Login
+### ✅ User Profiles & Login
 - Each user has a personalized profile with secure authentication.  
 - Users can save data, view their calendar, and access plans from any device.  
 - Ensures privacy and continuity across sessions.  

@@ -15,6 +15,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Enable CORS for frontend
+app.use(cors({
+  origin: 'http://localhost:5173', // Your Vite frontend URL
+  credentials: true
+}));
+
 // Routes
 app.use('/api/users', userRoutes)
 app.use('/api/workouts', workoutRoutes)
