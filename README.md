@@ -73,10 +73,8 @@ Backend:
 - Ensures privacy and continuity across sessions.  
 *(GIF demonstrating this feature goes here)*
 
+<img src="./demo1.gif" alt="Feature demonstration" />
 
-[gif goes here]
-
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
 ## Installation Instructions
 
